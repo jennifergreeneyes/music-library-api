@@ -65,6 +65,7 @@ describe("/artists", () => {
             });
             done();
           });
+          .catch((error) => done(error));
       });
     });
 
@@ -79,6 +80,7 @@ describe("/artists", () => {
             expect(res.body.genre).to.equal(artist.genre);
             done();
           });
+          .catch((error) => done(error));
       });
       it("returns a 404 if the artist doesn't exist", (done) => {
         request(app)
@@ -88,7 +90,49 @@ describe("/artists", () => {
             expect(res.body.error).to.equal("The artist could not be found.");
             done();
           });
+          .catch((error) => done(error));
       });
     });
+
+    describe("PATCH /artists/:id", () => {
+      it("updates artist genre by ID", (done) => {
+        const artist = artists[0];
+        request(app)
+        .patch(`/artists/${artist.id}`)
+        .send({ genre: 'Psychedelic Rock' })
+        .then((res) => {
+          expect(res.status).to.equal(200);
+          Artist.findByPk(artist.id, { raw: true }).then((updatedArtist) => {
+            expect(updatedArtist.genre).to.equal("Psychaldeic Rock");
+            done();
+          })
+        })
+        .catch((error) => done(error));
+      });
+      it("updated artist name by ID", (done) => {
+        const artist = artists[0];
+        request(app)
+        .patch(`/artists/${artist.id}`)
+        .send({ name: "Metallica" })
+        .then((res) => {
+          expect(res.status).to.equal(200);
+          Artist.findByPk(artist.id, { raw: true}).then((updatedArtist) => {
+            expect(updatedArtist.name).to.equal("Metallica");
+            done();
+          });
+        });
+      });
+      it("returns a 404 if the artist does not exist", (done) => {
+        request(app)
+        .patch("/artists/345")
+        .send({ name: "Led Zeppelin" })
+        .then((res) => {
+          expect(res.status).to.equal(404);
+          expect(res.body.error).to.equal("The artist does not exist.");
+          done();
+        })
+        .catch((error) => (error));
+      })
+    })
   });
 });
