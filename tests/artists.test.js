@@ -134,5 +134,20 @@ describe("/artists", () => {
         .catch((error) => (error));
       })
     })
+    describe("DELETE /artists/:artistId", () => {
+      it("deletes artist record by ID", (done) => {
+        const artist = artists[0];
+        request(app)
+        .delete(`/artists/${artist.id}`)
+        .then((res) => {
+          expect(res.status).to.equal(204);
+          Artist.findByPk(artist.id, { raw:true }).then((updatedArtist) => {
+            expect(updatedArtist).to.equal(null);
+            done();
+          });
+        })
+        .catch((error) => done(error));
+      })
+    })
   });
 });

@@ -1,17 +1,19 @@
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
 app.use(express.json());
 
-const artistControllers = require('./controllers/artists');
+const artistControllers = require("./controllers/artists");
 
-app.post('artists', artistControllers.create);
+app.post("artists", artistControllers.create);
 
-app.get('/artists', artistControllers.list);
+app.get("/artists", artistControllers.list);
 
-app.get('/artists/:artistID', artistControllers.getArtistByID);
+app.get("/artists/:artistID", artistControllers.getArtistByID);
 
 app.patch("/artists/:id", artistControllers.updateGenre);
+
+app.delete("/artists/:artistId", artistControllers.deleteArtist);
 
 module.exports = app;
