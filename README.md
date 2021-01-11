@@ -6,6 +6,13 @@ A Manchester Codes bootcamp project creating a music library API,  with Express,
 
 The purpose of this project is to build upn the following skills and concepts: 
 
+* Databases & database design
+* Data schema
+* Express Middleware
+* SQL
+* MySQL
+* Sequelize
+* Database querying and CRUD operations
 ## Languages
 
 * JavaScript
@@ -13,7 +20,7 @@ The purpose of this project is to build upn the following skills and concepts:
 
 ## Technologies
 
-* Node and Node Package Manager
+* Node and Node Package Manager (NPM)
 * Git & GitHub
 * Express
 * Sequelize
@@ -22,7 +29,9 @@ The purpose of this project is to build upn the following skills and concepts:
 * Docker
 * Dotenv
 * Nodemon
+* Postman
+* Mocha, Chai & SuperTest
 
 ## Status
 
-Project status: _In Progress_
+Project status: _Complete_

@@ -1,5 +1,3 @@
-const { Artist } = require(".");
-
 module.exports = (connection, DataTypes) => {
   const schema = {
     name: DataTypes.STRING,
