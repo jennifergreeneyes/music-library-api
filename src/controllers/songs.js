@@ -1,4 +1,3 @@
-const { is } = require("sequelize/types/lib/operators");
 const { Album, Artist, Song } = require("../models");
 
 const create = (req, res) => {

@@ -148,6 +148,6 @@ describe("/artists", () => {
         })
         .catch((error) => done(error));
       })
-    })
+    });
   });
 });

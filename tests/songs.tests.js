@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const request = require("supertest");
 const { Artist, Album, Song } = require("../src/models");
-const app = requre("../src/app");
+const app = require("../src/app");
 
 describe("/songs", () => {
   let artist;
